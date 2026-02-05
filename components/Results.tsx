@@ -7,9 +7,10 @@ interface ResultsProps {
   onRetake: () => void;
   onNextExam?: () => void;
   hasNextExam: boolean;
+  currentPart: number;
 }
 
-const Results: React.FC<ResultsProps> = ({ result, questions, onRetake, onNextExam, hasNextExam }) => {
+const Results: React.FC<ResultsProps> = ({ result, questions, onRetake, onNextExam, hasNextExam, currentPart }) => {
   const percentage = Math.round((result.score / result.total) * 100);
   
   const getGradeColor = (p: number) => {
@@ -32,7 +33,7 @@ const Results: React.FC<ResultsProps> = ({ result, questions, onRetake, onNextEx
         {/* Score Card */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
           <div className="bg-gray-900 p-8 text-white text-center">
-            <h2 className="text-3xl font-bold mb-2">Quiz Completed!</h2>
+            <h2 className="text-3xl font-bold mb-2">Part {currentPart} Completed!</h2>
             <p className="text-gray-400 mb-6">Here is how you performed in Fluid Mechanics</p>
             
             <div className="flex justify-center items-center gap-8 mb-6">
@@ -66,14 +67,14 @@ const Results: React.FC<ResultsProps> = ({ result, questions, onRetake, onNextEx
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
               </svg>
-              Retake This Exam
+              Retake Exam {currentPart}
             </button>
             {hasNextExam && onNextExam && (
               <button
                 onClick={onNextExam}
                 className="inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg shadow-blue-200"
               >
-                Proceed to Exam 2
+                Proceed to Exam {currentPart + 1}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
@@ -103,7 +104,7 @@ const Results: React.FC<ResultsProps> = ({ result, questions, onRetake, onNextEx
               >
                 <div className="flex items-start justify-between mb-4">
                   <h4 className="text-lg font-medium text-gray-900 pr-4">
-                    <span className="text-gray-400 font-normal mr-2">{questions.indexOf(q) + 1 + (questions[0].id > 50 ? 50 : 0)}.</span>
+                    <span className="text-gray-400 font-normal mr-2">{q.id}.</span>
                     {q.text}
                   </h4>
                   <span className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-bold ${

@@ -1305,3 +1305,657 @@ export const part2Questions: Question[] = [
     explanation: "Cavitation occurs when the local static pressure drops below the vapor pressure of the liquid, causing vapor bubbles to form."
   }
 ];
+
+export const part3Questions: Question[] = [
+  {
+    id: 101,
+    text: "The velocity potential function exists only for",
+    options: [
+      "Steady flow",
+      "Uniform flow",
+      "Irrotational flow",
+      "Rotational flow",
+      "Compressible flow"
+    ],
+    correctAnswer: 2,
+    explanation: "The velocity potential function (phi) is defined such that its derivative with respect to any direction gives the velocity in that direction. Mathematically, it only exists if the flow is irrotational (curl of velocity is zero)."
+  },
+  {
+    id: 102,
+    text: "A stream function (psi) exists for",
+    options: [
+      "Irrotational flow only",
+      "Two-dimensional flow satisfying continuity",
+      "Steady flow only",
+      "Uniform flow only",
+      "Compressible flow only"
+    ],
+    correctAnswer: 1,
+    explanation: "The stream function is defined for any 2D flow (steady or unsteady) as long as it satisfies the continuity equation."
+  },
+  {
+    id: 103,
+    text: "If 'u' and 'v' are components of velocity, then for irrotational flow",
+    options: [
+      "du/dy = dv/dx",
+      "du/dx = dv/dy",
+      "du/dy + dv/dx = 0",
+      "du/dx + dv/dy = 0",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "For 2D irrotational flow, the vorticity is zero, which means dv/dx - du/dy = 0, or du/dy = dv/dx."
+  },
+  {
+    id: 104,
+    text: "The thickness of the boundary layer is defined as the distance from the surface where the velocity is",
+    options: [
+      "Equal to free stream velocity",
+      "99% of free stream velocity",
+      "50% of free stream velocity",
+      "Zero",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "The boundary layer thickness (delta) is conventionally defined as the distance from the wall where the local velocity reaches 0.99 times the free-stream velocity (U)."
+  },
+  {
+    id: 105,
+    text: "Displacement thickness (delta*) is given by the integral of",
+    options: [
+      "(1 - u/U) dy",
+      "(u/U)(1 - u/U) dy",
+      "(u/U)(1 - u²/U²) dy",
+      "(u²/U²) dy",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "Displacement thickness delta* = integral from 0 to delta of [1 - (u/U)] dy. It represents the distance by which the external flow is pushed away due to boundary layer formation."
+  },
+  {
+    id: 106,
+    text: "Momentum thickness (theta) is given by the integral of",
+    options: [
+      "(1 - u/U) dy",
+      "(u/U)(1 - u/U) dy",
+      "(u/U)(1 - u²/U²) dy",
+      "(u²/U²) dy",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Momentum thickness theta = integral from 0 to delta of [(u/U) * (1 - u/U)] dy. It represents the loss of momentum per unit width due to the boundary layer."
+  },
+  {
+    id: 107,
+    text: "The separation of the boundary layer occurs when",
+    options: [
+      "Pressure gradient is zero",
+      "Pressure gradient is negative",
+      "Pressure gradient is positive (adverse)",
+      "Velocity is maximum",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "An adverse pressure gradient (dp/dx > 0) causes the fluid near the wall to slow down and eventually reverse direction, leading to flow separation."
+  },
+  {
+    id: 108,
+    text: "Geometric similarity between a model and prototype implies",
+    options: [
+      "Similarity of forces",
+      "Similarity of motion",
+      "Similarity of shape and dimensions",
+      "Similarity of velocities",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "Geometric similarity means that the ratio of all corresponding linear dimensions in the model and prototype are constant."
+  },
+  {
+    id: 109,
+    text: "Kinematic similarity between model and prototype implies",
+    options: [
+      "Similarity of shape",
+      "Similarity of forces",
+      "Similarity of velocity and acceleration",
+      "Similarity of pressure",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "Kinematic similarity means the ratios of velocities and accelerations at corresponding points in the model and prototype are constant."
+  },
+  {
+    id: 110,
+    text: "Dynamic similarity between model and prototype implies",
+    options: [
+      "Similarity of dimensions",
+      "Similarity of motion",
+      "Similarity of forces",
+      "Similarity of discharge",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "Dynamic similarity exists when the ratios of corresponding forces (like inertial, viscous, gravitational) in the model and prototype are constant."
+  },
+  {
+    id: 111,
+    text: "Reynolds model law is applicable for",
+    options: [
+      "Flow in closed conduits",
+      "Flow over spillways",
+      "Flow in open channels",
+      "All of the above",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "Reynolds model law is used when viscous forces are dominant, which is typical for flow in fully submerged bodies like pipes, submarines, and airplanes."
+  },
+  {
+    id: 112,
+    text: "Froude model law is used when the dominant force is",
+    options: [
+      "Viscous force",
+      "Gravity force",
+      "Surface tension force",
+      "Elastic force",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Froude model law is applicable for flows with a free surface where gravity is the predominant force, such as spillways, waves, and surface ships."
+  },
+  {
+    id: 113,
+    text: "Mach model law is applicable when the fluid is",
+    options: [
+      "Incompressible",
+      "Compressible at high speeds",
+      "Highly viscous",
+      "Stationary",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Mach model law is used for high-speed flows where compressibility effects and the speed of sound are significant (M > 0.3)."
+  },
+  {
+    id: 114,
+    text: "The ratio of inertia force to surface tension force is called",
+    options: [
+      "Reynolds number",
+      "Froude number",
+      "Weber number",
+      "Mach number",
+      "Euler number"
+    ],
+    correctAnswer: 2,
+    explanation: "Weber number (We) = Inertia Force / Surface Tension Force. It is important in flows where droplets, bubbles, or capillary effects are involved."
+  },
+  {
+    id: 115,
+    text: "In a distorted model",
+    options: [
+      "Geometric similarity is maintained",
+      "Horizontal and vertical scales are different",
+      "Horizontal and vertical scales are same",
+      "Forces are not similar",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "A distorted model is one where the linear scale ratio for the vertical dimension is different from the scale ratio for the horizontal dimension (common in river models)."
+  },
+  {
+    id: 116,
+    text: "Specific speed of a turbine is defined as the speed of a scale model of the turbine which",
+    options: [
+      "Produces unit discharge under unit head",
+      "Produces unit power under unit head",
+      "Produces unit power under unit discharge",
+      "Has unit diameter",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Specific speed (Ns) for a turbine is the speed of a geometrically similar turbine which would produce 1 kW power under a head of 1 meter."
+  },
+  {
+    id: 117,
+    text: "A Pelton wheel is a",
+    options: [
+      "Reaction turbine",
+      "Impulse turbine",
+      "Axial flow turbine",
+      "Mixed flow turbine",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Pelton wheel is a high-head, low-discharge tangential flow impulse turbine where the entire pressure energy of water is converted into kinetic energy in a nozzle before reaching the buckets."
+  },
+  {
+    id: 118,
+    text: "Francis turbine is a",
+    options: [
+      "Impulse turbine",
+      "Reaction turbine",
+      "Axial flow turbine",
+      "Mixed flow reaction turbine",
+      "Both b and d"
+    ],
+    correctAnswer: 4,
+    explanation: "Francis turbine is an inward mixed-flow reaction turbine used for medium heads."
+  },
+  {
+    id: 119,
+    text: "Kaplan turbine is an example of",
+    options: [
+      "Impulse turbine",
+      "Radial flow reaction turbine",
+      "Axial flow reaction turbine",
+      "Mixed flow reaction turbine",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "Kaplan turbine is an axial flow reaction turbine with adjustable runner blades, suitable for low heads and high discharges."
+  },
+  {
+    id: 120,
+    text: "The function of a draft tube in a reaction turbine is to",
+    options: [
+      "Increase the head of water",
+      "Decrease the pressure at the outlet",
+      "Convert kinetic energy at the exit into pressure energy",
+      "Prevent cavitation",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "A draft tube is a diverging pipe that connects the turbine runner exit to the tailrace, allowing the turbine to be set above the tailrace and recovering kinetic energy."
+  },
+  {
+    id: 121,
+    text: "Cavitation in turbines occurs primarily at",
+    options: [
+      "Inlet of the runner",
+      "Outlet of the runner",
+      "Nozzle",
+      "Penstock",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Cavitation occurs where the pressure is minimum. In reaction turbines, this is typically at the exit of the runner or the inlet of the draft tube."
+  },
+  {
+    id: 122,
+    text: "A centrifugal pump is used to",
+    options: [
+      "Convert mechanical energy into hydraulic energy",
+      "Convert hydraulic energy into mechanical energy",
+      "Increase the kinetic energy of fluid only",
+      "Decrease the pressure of fluid",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "A centrifugal pump works on the principle of forced vortex flow, converting mechanical energy from a motor into pressure energy in the fluid."
+  },
+  {
+    id: 123,
+    text: "Manometric head of a centrifugal pump is given by",
+    options: [
+      "Total head at inlet - Total head at outlet",
+      "Total head at outlet - Total head at inlet",
+      "Pressure head at outlet - Pressure head at inlet",
+      "Suction head + Delivery head",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Manometric head is the actual head against which the pump has to work, accounting for losses in the pump casing."
+  },
+  {
+    id: 124,
+    text: "Priming is required in",
+    options: [
+      "Reciprocating pumps",
+      "Centrifugal pumps",
+      "Jet pumps",
+      "All of the above",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Centrifugal pumps cannot develop enough suction pressure to lift water if the casing is filled with air. Priming involves filling the suction pipe and casing with liquid before starting."
+  },
+  {
+    id: 125,
+    text: "Specific speed of a pump is defined for",
+    options: [
+      "Unit power under unit head",
+      "Unit discharge under unit head",
+      "Unit discharge under unit power",
+      "Unit speed",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Specific speed (Ns) for a pump is the speed of a geometrically similar pump that would deliver 1 m³/s of discharge against a head of 1 meter."
+  },
+  {
+    id: 126,
+    text: "An air vessel in a reciprocating pump is used to",
+    options: [
+      "Increase the speed of the pump",
+      "Obtain continuous supply of liquid at uniform rate",
+      "Reduce the work done against friction",
+      "Both b and c",
+      "None of the above"
+    ],
+    correctAnswer: 3,
+    explanation: "Air vessels minimize acceleration heads and friction losses by smoothing out the pulsating flow of a reciprocating pump."
+  },
+  {
+    id: 127,
+    text: "Indicator diagram of a reciprocating pump represents the relationship between",
+    options: [
+      "Pressure and temperature",
+      "Pressure and volume",
+      "Pressure and stroke length",
+      "Velocity and pressure",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "The indicator diagram is a graph showing the pressure in the cylinder versus the stroke length (which is proportional to volume displacement)."
+  },
+  {
+    id: 128,
+    text: "Slip of a reciprocating pump is the difference between",
+    options: [
+      "Actual discharge and theoretical discharge",
+      "Theoretical discharge and actual discharge",
+      "Pressure at inlet and outlet",
+      "Suction head and delivery head",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Slip = Q_theoretical - Q_actual. It occurs due to leakage and valve delays."
+  },
+  {
+    id: 129,
+    text: "Negative slip in a reciprocating pump occurs when",
+    options: [
+      "Suction pipe is very long",
+      "Delivery pipe is short",
+      "Pump speed is high",
+      "All of the above",
+      "None of the above"
+    ],
+    correctAnswer: 3,
+    explanation: "Negative slip occurs when actual discharge is greater than theoretical discharge, often due to inertia effects in long suction/short delivery pipes at high speeds."
+  },
+  {
+    id: 130,
+    text: "Hydraulic ram is a device used to",
+    options: [
+      "Lift small quantity of water to a greater height",
+      "Lift large quantity of water to a small height",
+      "Measure discharge",
+      "Measure pressure",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "A hydraulic ram uses the water hammer effect from a large volume of water falling through a small head to lift a small portion of that water to a much higher elevation."
+  },
+  {
+    id: 131,
+    text: "For a given head, the specific speed of a Kaplan turbine compared to Pelton wheel is",
+    options: [
+      "Lower",
+      "Higher",
+      "Same",
+      "Depends on size",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Pelton wheel (Impulse) has the lowest specific speed (8-35), while Kaplan (Axial flow) has the highest (300-1000)."
+  },
+  {
+    id: 132,
+    text: "Multi-stage centrifugal pumps are used to",
+    options: [
+      "Deliver large discharge",
+      "Produce high heads",
+      "Pump viscous fluids",
+      "Prevent cavitation",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "In multi-stage pumps, impellers are arranged in series on the same shaft to increase the total head."
+  },
+  {
+    id: 133,
+    text: "Centrifugal pumps in parallel are used to",
+    options: [
+      "Deliver large discharge",
+      "Produce high heads",
+      "Decrease energy consumption",
+      "Prevent water hammer",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "Pumps in parallel share the same suction and delivery manifolds to increase the total discharge capacity."
+  },
+  {
+    id: 134,
+    text: "The efficiency of a centrifugal pump is maximum when the vanes are",
+    options: [
+      "Bent forward",
+      "Bent backward",
+      "Radial",
+      "None of the above",
+      "Independent of vane shape"
+    ],
+    correctAnswer: 1,
+    explanation: "Backward-curved vanes provide the most stable operation and highest efficiency for centrifugal pumps."
+  },
+  {
+    id: 135,
+    text: "The velocity of jet from a nozzle under a head H is given by",
+    options: [
+      "sqrt(gH)",
+      "sqrt(2gH)",
+      "Cv * sqrt(2gH)",
+      "Cd * sqrt(2gH)",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "The theoretical velocity is sqrt(2gH), and actual velocity is Cv times that, where Cv is the coefficient of velocity."
+  },
+  {
+    id: 136,
+    text: "The force exerted by a jet of water on a fixed vertical plate is",
+    options: [
+      "rho * a * V²",
+      "rho * a * V²/2",
+      "rho * a * V",
+      "2 * rho * a * V²",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "The force is the rate of change of momentum. Since the final velocity in the original direction is zero, F = m_dot * (V - 0) = (rho * a * V) * V = rho * a * V²."
+  },
+  {
+    id: 137,
+    text: "Force exerted by a jet on a fixed curved vane at the center is",
+    options: [
+      "rho * a * V²",
+      "rho * a * V² (1 + cos theta)",
+      "rho * a * V² (1 - cos theta)",
+      "2 * rho * a * V²",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "If the jet is deflected through an angle theta, the change in velocity is V - (-V cos theta) = V(1 + cos theta)."
+  },
+  {
+    id: 138,
+    text: "Work done by a jet on a moving plate per second is",
+    options: [
+      "F * V",
+      "F * u",
+      "F * (V - u)",
+      "F * (V + u)",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Work done = Force x velocity of the plate (u)."
+  },
+  {
+    id: 139,
+    text: "Hydraulic efficiency of a Pelton wheel is maximum when bucket speed is",
+    options: [
+      "Equal to jet speed",
+      "Half of jet speed",
+      "One-third of jet speed",
+      "Twice the jet speed",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Maximum theoretical efficiency (100%) for a Pelton wheel occurs when u = V/2."
+  },
+  {
+    id: 140,
+    text: "Governing of a turbine is required to",
+    options: [
+      "Maintain constant speed at all loads",
+      "Increase efficiency",
+      "Prevent cavitation",
+      "Stop the turbine",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "Governing keeps the turbine speed constant by regulating the flow of water as the load on the generator changes."
+  },
+  {
+    id: 141,
+    text: "Boyle's Law for gases states that for a constant temperature",
+    options: [
+      "P is proportional to V",
+      "P is proportional to 1/V",
+      "V is proportional to T",
+      "P/T is constant",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Boyle's law: PV = constant for a fixed mass of gas at constant temperature."
+  },
+  {
+    id: 142,
+    text: "The speed of sound in a fluid is given by",
+    options: [
+      "sqrt(K/rho)",
+      "sqrt(rho/K)",
+      "K * rho",
+      "P/rho",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "The velocity of sound (a) = sqrt(Bulk Modulus / Density)."
+  },
+  {
+    id: 143,
+    text: "Stagnation pressure is the pressure reached when the fluid velocity is reduced to",
+    options: [
+      "Free stream velocity",
+      "Zero",
+      "Sonic speed",
+      "Maximum",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Stagnation pressure is the sum of static pressure and dynamic pressure (P + 0.5 * rho * V²), representing the total pressure at a point where velocity is zero."
+  },
+  {
+    id: 144,
+    text: "Dimension of dynamic viscosity is",
+    options: [
+      "ML⁻¹T⁻¹",
+      "MLT⁻¹",
+      "ML⁻²T⁻¹",
+      "ML⁻¹T⁻²",
+      "None of the above"
+    ],
+    correctAnswer: 0,
+    explanation: "Viscosity (mu) = Stress / Velocity Gradient = [ML⁻¹T⁻²] / [T⁻¹] = [ML⁻¹T⁻¹]."
+  },
+  {
+    id: 145,
+    text: "The ratio of kinematic viscosity of air to water is roughly",
+    options: [
+      "1",
+      "10",
+      "15",
+      "1/10",
+      "1/15"
+    ],
+    correctAnswer: 2,
+    explanation: "Although water is more viscous (dynamic), air is much less dense. Kinematic viscosity (nu = mu/rho) of air is about 1.5 x 10⁻⁵ m²/s while water is 1.0 x 10⁻⁶ m²/s. Ratio is roughly 15."
+  },
+  {
+    id: 146,
+    text: "Flow net consists of",
+    options: [
+      "Path lines and streak lines",
+      "Streamlines and path lines",
+      "Streamlines and equipotential lines",
+      "Velocity and pressure lines",
+      "None of the above"
+    ],
+    correctAnswer: 2,
+    explanation: "A flow net is a grid of mutually perpendicular streamlines and equipotential lines used to visualize 2D irrotational flow."
+  },
+  {
+    id: 147,
+    text: "The line of action of the buoyant force always passes through the",
+    options: [
+      "Center of gravity of the body",
+      "Center of pressure",
+      "Metacenter",
+      "Centroid of the displaced volume",
+      "None of the above"
+    ],
+    correctAnswer: 3,
+    explanation: "Buoyant force acts through the Center of Buoyancy, which is the centroid of the volume of liquid displaced by the body."
+  },
+  {
+    id: 148,
+    text: "A rectangular plate 1m x 2m is submerged vertically in water with its 1m side at the surface. Depth of center of pressure is",
+    options: [
+      "1.0 m",
+      "1.33 m",
+      "1.5 m",
+      "0.66 m",
+      "None of the above"
+    ],
+    /* Fixed: Changed 'content' to 'correctAnswer' to match the Question interface */
+    correctAnswer: 1,
+    explanation: "For a vertical rectangle with top edge at surface, h_cp = (2/3) * height = (2/3) * 2 = 1.33 m."
+  },
+  {
+    id: 149,
+    text: "In which of the following cases is Bernoulli's equation not valid?",
+    options: [
+      "Steady flow",
+      "Incompressible flow",
+      "Viscous flow",
+      "Irrotational flow",
+      "Flow along a streamline"
+    ],
+    correctAnswer: 2,
+    explanation: "Bernoulli's equation neglects viscosity. It is derived for an inviscid (non-viscous) fluid."
+  },
+  {
+    id: 150,
+    text: "Maximum efficiency of transmission of power through a pipe is",
+    options: [
+      "50%",
+      "66.67%",
+      "75%",
+      "100%",
+      "None of the above"
+    ],
+    correctAnswer: 1,
+    explanation: "Since power is maximum when head loss hf = H/3, the efficiency eta = (H - hf)/H = (H - H/3)/H = 2/3 = 66.67%."
+  }
+];

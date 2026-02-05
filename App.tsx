@@ -5,15 +5,24 @@ import Results from './components/Results';
 import Registration from './components/Registration';
 import AdminDashboard from './components/AdminDashboard';
 import { QuizState, QuizResult, StudentInfo, StoredResult } from './types';
-import { part1Questions, part2Questions } from './questions';
+import { part1Questions, part2Questions, part3Questions } from './questions';
 
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<QuizState>(QuizState.REGISTRATION);
   const [result, setResult] = useState<QuizResult | null>(null);
-  const [quizSet, setQuizSet] = useState<1 | 2>(1);
+  const [quizSet, setQuizSet] = useState<1 | 2 | 3>(1);
   const [studentInfo, setStudentInfo] = useState<StudentInfo | null>(null);
 
-  const currentQuestions = quizSet === 1 ? part1Questions : part2Questions;
+  const getQuestionsForSet = (set: number) => {
+    switch (set) {
+      case 1: return part1Questions;
+      case 2: return part2Questions;
+      case 3: return part3Questions;
+      default: return part1Questions;
+    }
+  };
+
+  const currentQuestions = getQuestionsForSet(quizSet);
 
   const handleRegistration = (info: StudentInfo) => {
     setStudentInfo(info);
@@ -22,7 +31,7 @@ const App: React.FC = () => {
 
   const handleAdminLogin = () => {
     const password = prompt("Enter Admin Password:");
-    if (password === "admin123") { // Simple client-side check
+    if (password === "admin123") {
       setGameState(QuizState.ADMIN);
     } else if (password) {
       alert("Incorrect password");
@@ -51,7 +60,6 @@ const App: React.FC = () => {
     setResult(newResult);
     setGameState(QuizState.COMPLETED);
 
-    // Persist to local storage
     if (studentInfo) {
       const submission: StoredResult = {
         studentInfo,
@@ -74,7 +82,7 @@ const App: React.FC = () => {
   };
 
   const nextExam = () => {
-    setQuizSet(2);
+    setQuizSet((prev) => (prev < 3 ? (prev + 1) as 1 | 2 | 3 : prev));
     setResult(null);
     setGameState(QuizState.WELCOME);
   };
@@ -109,7 +117,8 @@ const App: React.FC = () => {
           questions={currentQuestions} 
           onRetake={retakeQuiz}
           onNextExam={nextExam}
-          hasNextExam={quizSet === 1}
+          hasNextExam={quizSet < 3}
+          currentPart={quizSet}
         />
       )}
     </>
